@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}WatchWise{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <div class = "logo-name">
+                            <a href="/">
+                                <img src="/static/img/logo.png" alt="Logo" class="logo-img">
+                                <p class = "logo-text">KnowIt</p>
+                            </a>
+                        </div>
+                    </li>
+                    {% if nickname == "Guest" %}
+                        <li>
+                            <button onclick="location.href = '/login'" class = "login-button">Войти</button>
+                        </li>
+                    {% else %}
+                        <li>
+                            <button onclick="location.href = '/logout'" class = "logout-button">Выйти</button>
+                            <a href = "/">
+                                <img src="{{ url_for('static', filename='img/unauthorized_user.png') }}" alt = "user-avatar" class = "profile-icon-img">
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-message">
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+        <footer>
+            <p>Все права защищены © 2025</p>
+        </footer>
+</body>
+</html>

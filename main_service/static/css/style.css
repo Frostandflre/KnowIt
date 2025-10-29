@@ -1,0 +1,115 @@
+html,body {
+    font-family: Arial, sans-serif;
+    background-color: #110b29;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page-container {
+  flex: 1;
+}
+
+footer {
+  background: #1c1c1c;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+header {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    background-color: #372773;
+    color: white;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid #333;
+}
+
+.logo-name {
+    position: absolute;
+    height: 40px;
+    left: 20px;
+
+}
+
+.logo-img {
+    position: absolute;
+    height: 40px;
+    bottom: 20px;
+}
+
+.logo-text{
+    position: absolute;
+    left: 45px;
+    bottom: 0px;
+    font-size: 24px;
+    color: #190F40;
+}
+
+.login-button {
+    position: absolute;
+    background-color: #190F40;
+    color: #bebebe;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    right: 20px;
+    bottom: 8px;
+}
+
+.logout-button {
+    position: absolute;
+    background-color: #190F40;
+    color: #bebebe;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    right: 65px;
+    bottom: 8px;
+
+}
+
+.profile-icon-img {
+    position: absolute;
+    width: 35px;
+    border-radius: 50%;
+    right: 20px;
+    bottom: 8px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.flash-message {
+    position: relative;
+    max-width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #bebebe;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    margin-bottom: 20px;
+}
+
+.alert-error{
+    color: red;
+}
