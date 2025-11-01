@@ -1,11 +1,21 @@
 html,body {
-    font-family: Arial, sans-serif;
-    background-color: #110b29;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    background-color: #8B3533;
+    color: #333333;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #000000;
 }
 
 .page-container {
@@ -17,17 +27,17 @@ footer {
   color: white;
   text-align: center;
   padding: 10px;
+  width: 100%;
 }
 
 header {
     display: flex;
     position: relative;
     justify-content: space-between;
-    background-color: #372773;
+    background-color: #8B3533;
     color: white;
     align-items: center;
     height: 50px;
-    border-bottom: 1px solid #333;
 }
 
 .logo-name {
@@ -53,25 +63,52 @@ header {
 
 .login-button {
     position: absolute;
-    background-color: #190F40;
+    background-color: #8B3533;
     color: #bebebe;
-    padding: 10px 20px;
+    padding: 10px 5px;
     border: none;
-    border-radius: 15px;
     cursor: pointer;
-    right: 20px;
+    right: 145px;
     bottom: 8px;
+}
+
+.reg-button-container{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 1000;
+}
+
+.registration-button{
+    position: relative;
+    background-color: #000;
+    color: #bebebe;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+.reg-button-container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: 200px;
+    background-color: #000;
+    z-index: -1;
 }
 
 .logout-button {
     position: absolute;
-    background-color: #190F40;
+    background-color: #8B3533;
     color: #bebebe;
-    padding: 10px 20px;
+    padding: 10px 5px;
     border: none;
-    border-radius: 15px;
     cursor: pointer;
-    right: 65px;
+    right: 145px;
     bottom: 8px;
 
 }
@@ -80,7 +117,7 @@ header {
     position: absolute;
     width: 35px;
     border-radius: 50%;
-    right: 20px;
+    right: 125px;
     bottom: 8px;
 }
 nav ul {
@@ -112,4 +149,16 @@ main {
 
 .alert-error{
     color: red;
+}
+
+.welcome-container{
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+.welcome-container p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
 }
