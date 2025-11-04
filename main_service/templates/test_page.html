@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{test_title}}</h1>
+<div class="test-bg">
+
+    <div class="progress">
+      <div class="progress-fill" style="width: {{ progress }}%;"></div>
+    </div>
+
+    <div class="question-box">
+      <h2 class="question">{{ question.question }}</h2>
+    </div>
+
+    <form class="answers" method="post">
+
+      <label class="answer">
+        <input type="radio" name="answer" value="1" required>
+        <span>{{ question.first_answer }}</span>
+      </label>
+
+      <label class="answer">
+        <input type="radio" name="answer" value="2">
+        <span>{{ question.second_answer }}</span>
+      </label>
+
+      <label class="answer">
+        <input type="radio" name="answer" value="3">
+        <span>{{ question.third_answer }}</span>
+      </label>
+
+      <label class="answer">
+        <input type="radio" name="answer" value="4">
+        <span>{{ question.fourth_answer }}</span>
+      </label>
+
+      <input type="hidden" name="right_answer" value="{{ question.right_answer }}">
+
+      <button class="btn-submit-answer" type="submit">Ответить</button>
+
+    </form>
+
+  </div>
+{% endblock %}

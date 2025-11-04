@@ -1,46 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}KnowIt{% endblock %}</title>
+    <title>KnowIT — Платформа обучения</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="page-container">
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <div class = "logo-name">
-                            <a href="/">
-                                <img src="/static/img/logo.png" alt="Logo" class="logo-img">
-                                <p class = "logo-text">KnowIt</p>
-                            </a>
-                        </div>
-                    </li>
-                    {% if nickname == "Guest" %}
-                        <li>
-                            <button onclick="location.href = '/login'" class = "login-button">Войти</button>
-                        </li>
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><a href="/">KnowIT</a></div>
+            <nav class="navbar">
+              <div class="dropdown">
+                <button class="dropdown-btn">Специальности ▼</button>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Строительство и эксплуатация зданий и сооружений') }}">Строительство и эксплуатация зданий и сооружений</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Производство неметаллических строительных изделий и конструкций') }}">Производство неметаллических строительных изделий и конструкций</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Водоснабжение и водоотведение') }}">Водоснабжение и водоотведение</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Электрические станции, сети, их релейная защита и автоматизация') }}">Электрические станции, сети, их релейная защита и автоматизация</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Электроснабжение') }}">Электроснабжение</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Тепловые электрические станции') }}">Тепловые электрические станции</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Организация перевозок и управление на транспорте') }}">Организация перевозок и управление на транспорте</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Техническая эксплуатация подъемно-транспортных, строительных, дорожных машин и оборудования') }}">Техническая эксплуатация подъемно-транспортных, строительных, дорожных машин и оборудования</a></li>
+                    <li><a href="{{ url_for('main.tests_main_page', profession='Информатика и вычислительная техника') }}">Информатика и вычислительная техника</a></li>
 
-                        <li class = "reg-button-container">
-                            <button onclick="location.href = '/registration'" class = "registration-button">Зарегистрироватся</button>
-                        </li>
-                    {% else %}
-                        <li>
-                            <button onclick="location.href = '/logout'" class = "logout-button">Выйти</button>
-                            <a href = "/">
-                                <img src="{{ url_for('static', filename='img/unauthorized_user.png') }}" alt = "user-avatar" class = "profile-icon-img">
-                            </a>
-                        </li>
-                    {% endif %}
                 </ul>
+              </div>
+                <a href="#">О Колледже</a>
             </nav>
-        </header>
+            <div class="header-actions">
+                {% if nickname == "Guest" %}
+                    <a class="btn-outline" href="/login">Войти</a>
+                    <a class="btn-black" href="/registration">Зарегистрироваться</a>
+                {% else %}
+                    <a class="btn-outline" href="/logout">Выйти</a>
+                    <a href = "/profile">
+                        <img src="{{ url_for('static', filename='img/unauthorized_user.png') }}" alt = "user-avatar" class = "profile-icon-img">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
 
         <main>
             {% with messages = get_flashed_messages(with_categories=true) %}
@@ -57,9 +58,12 @@
 
             {% block content %}{% endblock %}
         </main>
-    </div>
-        <footer>
-            <p>Все права защищены © 2025</p>
-        </footer>
+    <footer>
+        <div class="container footer-inner">
+            <div>KnowIT | НПК им. Е.Н. Королёва</div>
+            <div>Политика конфиденциальности | Техподдержка</div>
+            <div>© 2025 KnowIT. Все права защищены.</div>
+        </div>
+    </footer>
 </body>
 </html>

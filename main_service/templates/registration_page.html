@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form">
+    <h2>Введите ваши данные:</h2>
+    <form method="POST" >
+
+        {{  form.hidden_tag() }}
+
+
+        {{ form.nickname.label }}
+        <div>{{ form.nickname(size = 32,class_="form-field") }}</div>
+
+
+        {{ form.email.label }}
+        <div>{{ form.email(class_="form-field") }}</div>
+
+
+        {{ form.password.label }}
+        <div>{{ form.password(size = 32,class_="form-field") }}</div>
+
+        {{ form.submit(class_="submit-button") }}
+        <h4>Или</h4>
+        <div><button onclick="location.href = '/login'" class = "auxiliary-button">Войти</button></div>
+
+    </form>
+</div>
+
+{% if form.errors %}
+<ul>
+    {% for field,errors in form.errors.items() %}
+    <li>{{field.label}}:
+        <ul>
+            {% for error in errors %}
+                <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

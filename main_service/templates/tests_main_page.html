@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="course-header">
+    Курс 1
+</div>
+{% for test in test_cards.first_course %}
+      <div class="test-card">
+          <div class="test-img"><img src="{{ url_for('static', filename='img/' ~test.course~ '/' ~test.profession~ '/' ~test.test_title~ '.jpg') }}"></div>
+          <h4>{{ test.test_title }}</h4>
+          <a class="btn-burgundy" href="{{ url_for('main.test_page', test_title=test.test_title,question_number=1) }}">Пройти тестирование</a>
+      </div>
+{% endfor %}
+<div class="course-header">
+    Курс 2
+</div>
+{% for test in test_cards.second_course %}
+      <div class="test-card">
+          <div class="test-img"><img src="{{ url_for('static', filename='img/' ~test.course~ '/' ~test.profession~ '/' ~test.test_title~ '.jpg') }}"></div>
+          <h4>{{ test.test_title }}</h4>
+          <div class="test-img"></div>
+          <a class="btn-burgundy" href="{{ url_for('main.test_page', test_title=test.test_title,question_number=1) }}">Пройти тестирование</a>
+      </div>
+{% endfor %}
+<div class="course-header">
+    Курс 3
+</div>
+{% for test in test_cards.third_course %}
+      <div class="test-card">
+          <div class="test-img"><img src="{{ url_for('static', filename='img/' ~test.course~ '/' ~test.profession~ '/' ~test.test_title~ '.jpg') }}"></div>
+          <h4>{{ test.test_title }}</h4>
+          <div class="test-img"></div>
+          <a class="btn-burgundy" href="{{ url_for('main.test_page', test_title=test.test_title,question_number=1) }}">Пройти тестирование</a>
+      </div>
+{% endfor %}
+<div class="course-header">
+    Курс 4
+</div>
+{% for test in test_cards.fourth_course %}
+      <div class="test-card">
+          <div class="test-img"><img src="{{ url_for('static', filename='img/' ~test.course~ '/' ~test.profession~ '/' ~test.test_title~ '.jpg') }}"></div>
+          <h4>{{ test.test_title }}</h4>
+          <div class="test-img"></div>
+          <a class="btn-burgundy" href="{{ url_for('main.test_page', test_title=test.test_title,question_number=1) }}">Пройти тестирование</a>
+      </div>
+{% endfor %}
+{% endblock %}

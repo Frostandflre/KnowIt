@@ -1,2 +1,5 @@
 .idea/
 .venv/
+/main_service/config.py
+/auth_service/config.py
+/tests_service/config.py

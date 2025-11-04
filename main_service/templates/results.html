@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="test-bg">
+    <h2 class="result-title">✅ Вы прошли тест</h2>
+
+    <div class="result-box">
+        <h1 class="percent">{{ percent }}%</h1>
+
+        {% if percent >= 70 %}
+            <p class="status success">Успешно</p>
+        {% elif percent >= 40 %}
+            <p class="status mid">Нужно улучшить</p>
+        {% else %}
+            <p class="status fail">Низкий результат</p>
+        {% endif %}
+
+        <p class="info">({{ score }} правильных из {{ total }} вопросов)</p>
+
+        <div class="progress">
+            <div class="progress-fill" style="width: {{ percent }}%"></div>
+        </div>
+    </div>
+
+    <h3>📊 Ваш уровень знаний</h3>
+    <div class="level-box">
+
+        {% if percent >= 85 %}
+            <p><b>Эксперт</b> — Отличные знания. Продолжайте развиваться!</p>
+        {% elif percent >= 60 %}
+            <p><b>Продвинутый уровень</b> — Хорошая подготовка, есть мелкие пробелы.</p>
+        {% elif percent >= 40 %}
+            <p><b>Средний уровень</b> — Есть основы, рекомендуем подтянуть темы.</p>
+        {% else %}
+            <p><b>Начальный уровень</b> — Начните с базовых материалов.</p>
+        {% endif %}
+
+    </div>
+
+    <h3>📌 Рекомендации</h3>
+    <ul class="tips">
+        <li>Повторите темы, где возникли сложности</li>
+        <li>Попробуйте пройти дополнительные тесты</li>
+        <li>Изучайте практические примеры</li>
+    </ul>
+
+    <div class="btns">
+        <a href="{{ url_for('main.test_page', test_title=test_title, question_number=1) }}" class="retry-btn">Пройти заново</a>
+        <a href="{{ url_for('main.main_page') }}" class="btn-outline-black">Вернуться на главную</a>
+    </div>
+
+</div>
+
+{% endblock %}

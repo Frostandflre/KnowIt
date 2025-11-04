@@ -1,10 +1,64 @@
 {% extends "base.html" %}
 
-{% block title %}KnowIt{% endblock %}
-
 {% block content %}
-<div class = "welcome-container">
-    <h1>Начни учиться. Получи знания. С платформой KnowIT.</h1>
-    <p>Легко планируйте, проходите и повторяйте учебные материалы, курсы и тесты, разработанные специально для студентов Нижнекамского политехнического колледжа имени Е.Н.Королёва — все в одном удобном месте.</p>
-</div>
+<section class="hero">
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <h1>Начни учиться.<br>Получи знания. С KnowIT.</h1>
+            <p>Учебная онлайн-платформа НПК им. Королёва для студентов и преподавателей</p>
+
+            {% if nickname == "Guest" %}
+            <div class="hero-buttons">
+                <a class="btn-yellow" href="/registration">Зарегистрироваться</a>
+                <a class="btn-outline-black" href="/login">Войти</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="features container">
+    <div class="feature-card">
+        <div class="icon">📅</div>
+        <h3>Отслеживайте свой прогресс</h3>
+        <p>Видите результаты тестов, историю обучения и динамику развития навыков в режиме реального времени.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">📝</div>
+        <h3>Проверка знаний</h3>
+        <p>Интерактивные тесты и экзамены по каждой дисциплине.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">📚</div>
+        <h3>Развивайте профессиональные навыки</h3>
+        <p>Проходите задания и тесты, направленные на формирование ключевых компетенций вашей специальности.</p>
+    </div>
+</section>
+
+<section class="tests container">
+
+    <div class="test-card">
+        <div class="test-img"><img src="static/img/welcome_page_first_test.jpg"></div>
+        <h4>Базовые профессиональные знания</h4>
+        <p>Проверка ключевых компетенций: коммуникация и термины, встречающиеся в любой профессии.</p>
+        <a class="btn-burgundy" href="#">Пройти тестирование</a>
+    </div>
+
+    <div class="test-card">
+        <div class="test-img"><img src="static/img/welcome_page_second_test.jpg"></div>
+        <h4>Основы цифровой грамотности и безопасности</h4>
+        <p>Оценка знаний, необходимых для современной профессиональной среды и работа с компьютером.</p>
+        <a class="btn-burgundy" href="#">Пройти тестирование</a>
+    </div>
+
+    <div class="test-card">
+        <div class="test-img"><img src="static/img/welcome_page_third_test.jpg"></div>
+        <h4>Командная работа и профессиональная этика</h4>
+        <p>Проверка навыков взаимодействия, роли в команде, поведения в учебном/рабочем процессе.</p>
+        <a class="btn-burgundy" href="#">Пройти тестирование</a>
+    </div>
+
+</section>
 {% endblock %}
