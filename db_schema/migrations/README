@@ -1,0 +1,17 @@
+Generic single-database configuration.
+
+
+Прописать в alembic.ini url адрес базы данных
+
+из корневой папки проекта запустить команды
+
+alembic -c db_schema/alembic.ini revision --autogenerate -m "Initial schema"
+alembic -c db_schema/alembic.ini upgrade head
+
+прописать в директории db_schema
+
+
+Для обновления базы данных: flask --app run_migrations db upgrade
+
+Для внесения изменений в миграцию: flask --app run_migrations db migrate -m "Название миграции"
+

@@ -1,6 +1,6 @@
 from flask import Flask
 from .routes import auth
-from db_extensions import database
+from db_schema.db_extensions import database
 
 def create_auth_app():
     app = Flask(__name__)

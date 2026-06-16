@@ -1,6 +1,6 @@
 from flask import Flask
 from .routes import tests
-from db_extensions import database
+from db_schema.db_extensions import database
 
 def create_tests_app():
     app = Flask(__name__)

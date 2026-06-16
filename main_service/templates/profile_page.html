@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="profile-container">
+
+    <section class="profile-hero">
+        <h1>Мой профиль</h1>
+        <p>Следите за своими успехами и развитием на платформе.</p>
+    </section>
+
+    <section class="profile-card">
+
+        <div class="profile-left">
+            <img src="{{ url_for('static', filename='img/unauthorized_user.png') }}"
+                 class="profile-avatar"
+                 alt="Аватар">
+
+            <a href="#" class="btn-outline-black">
+                Редактировать профиль
+            </a>
+        </div>
+
+        <div class="profile-info">
+            <h2>{{ user_info.nickname }}</h2>
+
+            <div class="profile-fields">
+                <p>
+                {% if user_info.is_teacher %}
+                    Преподаватель
+                {% else %}
+                    Студент
+                {% endif %}
+                </p>
+
+                {% if not user_info.is_teacher %}
+                <p><strong>Группа:</strong> {{ user_info.group }}</p>
+                {% endif %}
+                <p><strong>На платформе с:</strong> {{ created_at }}</p>
+            </div>
+        </div>
+
+        <div class="profile-stats">
+
+            <div class="stat-card">
+                <img src="/static/img/Calendar_icon.jpg" class="stat-icon">
+                <div class="stat-content">
+                    <span class="stat-number">{{ days_in_platform }}</span>
+                    <span class="stat-text">Дней на платформе</span>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <img src="/static/img/average_score_icon.jpg" class="stat-icon">
+                <div class="stat-content">
+                    <span class="stat-number">{{ user_info.average_score }}%</span>
+                    <span class="stat-text">Средний результат</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <img src="/static/img/tests_passed_icon.jpg" class="stat-icon">
+                <div class="stat-content">
+                    <span class="stat-number">{{ tests_passed }}</span>
+                    <span class="stat-text">Тестов пройдено</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    {% if not user_info.is_teacher %}
+        <section class="ratings">
+
+            <div class="rating-card">
+
+                <h3>Рейтинг среди группы</h3>
+
+                <table class="rating-table">
+                    <thead>
+                        <tr>
+                            <th>Место</th>
+                            <th>Студент</th>
+                            <th>Средний результат</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for student in group_rating %}
+                        <tr {% if student.user_id == user_info.user_id %}class="current-user"{% endif %}>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ student.nickname }}</td>
+                            <td>{{ student.average_score }}%</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    {% endif %}
+    <div class ="fill-block"></div>
+</div>
+
+{% endblock %}

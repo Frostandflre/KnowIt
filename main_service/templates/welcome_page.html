@@ -40,24 +40,24 @@
 <section class="tests container">
 
     <div class="test-card">
-        <div class="test-img"><img src="static/img/welcome_page_first_test.jpg"></div>
+        <div class="test-img"><img src="static/img/welcome_page_first_test.jpg" loading="lazy"></div>
         <h4>Базовые профессиональные знания</h4>
         <p>Проверка ключевых компетенций: коммуникация и термины, встречающиеся в любой профессии.</p>
-        <a class="btn-burgundy" href="#">Пройти тестирование</a>
+        <a class="btn-burgundy" href="{{ url_for('main.test_page', test_title='Базовые профессиональные знания',question_number=1) }}">Пройти тестирование</a>
     </div>
 
     <div class="test-card">
-        <div class="test-img"><img src="static/img/welcome_page_second_test.jpg"></div>
+        <div class="test-img"><img src="static/img/welcome_page_second_test.jpg" loading="lazy"></div>
         <h4>Основы цифровой грамотности и безопасности</h4>
         <p>Оценка знаний, необходимых для современной профессиональной среды и работа с компьютером.</p>
-        <a class="btn-burgundy" href="#">Пройти тестирование</a>
+        <a class="btn-burgundy" href="{{ url_for('main.test_page', test_title='Основы цифровой грамотности и безопасности',question_number=1) }}">Пройти тестирование</a>
     </div>
 
     <div class="test-card">
-        <div class="test-img"><img src="static/img/welcome_page_third_test.jpg"></div>
+        <div class="test-img"><img src="static/img/welcome_page_third_test.jpg" loading="lazy"></div>
         <h4>Командная работа и профессиональная этика</h4>
         <p>Проверка навыков взаимодействия, роли в команде, поведения в учебном/рабочем процессе.</p>
-        <a class="btn-burgundy" href="#">Пройти тестирование</a>
+        <a class="btn-burgundy" href="{{ url_for('main.test_page', test_title='Командная работа и профессиональная этика',question_number=1) }}">Пройти тестирование</a>
     </div>
 
 </section>

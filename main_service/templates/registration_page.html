@@ -1,43 +1,115 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="form">
-    <h2>Введите ваши данные:</h2>
-    <form method="POST" >
+<div class="login-registration-container">
+    <div class="form">
+        <h2>Введите ваши данные:</h2>
 
-        {{  form.hidden_tag() }}
+        <div class="role-toggle" style="display: flex; background: #f0f0f0; border-radius: 30px; padding: 4px; margin-bottom: 20px;">
+            <button type="button" class="toggle-btn active" id="btn-student" onclick="switchRole('student')" style="flex:1; border:none; background:none; padding:10px; font-weight:bold; border-radius:25px; cursor:pointer;">Студент</button>
+            <button type="button" class="toggle-btn" id="btn-teacher" onclick="switchRole('teacher')" style="flex:1; border:none; background:none; padding:10px; font-weight:bold; border-radius:25px; cursor:pointer;">Учитель</button>
+        </div>
+
+        <form method="POST" id="reg-form">
+
+            {{  form.hidden_tag() }}
 
 
-        {{ form.nickname.label }}
-        <div>{{ form.nickname(size = 32,class_="form-field") }}</div>
+            {{ form.nickname.label }}
+            <div>{{ form.nickname(size = 32,class_="form-field") }}</div>
 
 
-        {{ form.email.label }}
-        <div>{{ form.email(class_="form-field") }}</div>
+            {{ form.email.label }}
+            <div>{{ form.email(class_="form-field") }}</div>
 
 
-        {{ form.password.label }}
-        <div>{{ form.password(size = 32,class_="form-field") }}</div>
+            {{ form.password.label }}
+            <div>{{ form.password(size = 32,class_="form-field") }}</div>
 
-        {{ form.submit(class_="submit-button") }}
-        <h4>Или</h4>
-        <div><button onclick="location.href = '/login'" class = "auxiliary-button">Войти</button></div>
+            <div id="student-block">
+                {{ form.group.label }}
+                <div>
+                    {{ form.group(class_="form-field", list="groups-list") }}
+                </div>
+                <datalist id="groups-list">
+                    {% if groups %}
+                        {% for g in groups %}
+                            <option value="{{ g }}">
+                        {% endfor %}
+                    {% else %}
+                        <option value="121">
+                        <option value="221">
+                        <option value="341">
+                        <option value="521/524">
+                        <option value="522">
+                    {% endif %}
+                </datalist>
+            </div>
 
-    </form>
+            <div id="teacher-block" style="display: none;">
+                {{ form.teacher_code.label }}
+                <div>{{ form.teacher_code(class_="form-field") }}</div>
+            </div>
+
+            {{ form.submit(class_="submit-button") }}
+            <h4>Или</h4>
+            <div><button onclick="location.href = '/login'" class = "auxiliary-button">Войти</button></div>
+
+        </form>
+    </div>
+
+    {% if form.errors %}
+    <ul>
+        {% for field,errors in form.errors.items() %}
+        <li>{{field.label}}:
+            <ul>
+                {% for error in errors %}
+                    <li>{{error}}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="fill-block"></div>
 </div>
+<script>
+function switchRole(role) {
+    const btnStudent = document.getElementById('btn-student');
+    const btnTeacher = document.getElementById('btn-teacher');
+    const studentBlock = document.getElementById('student-block');
+    const teacherBlock = document.getElementById('teacher-block');
 
-{% if form.errors %}
-<ul>
-    {% for field,errors in form.errors.items() %}
-    <li>{{field.label}}:
-        <ul>
-            {% for error in errors %}
-                <li>{{error}}</li>
-            {% endfor %}
-        </ul>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+    const groupInput = studentBlock.querySelector('input');
+    const codeInput = teacherBlock.querySelector('input');
 
+    if (role === 'student') {
+        btnStudent.style.background = '#000000'; btnStudent.style.color = '#ffffff';
+        btnTeacher.style.background = 'none'; btnTeacher.style.color = '#555555';
+
+        studentBlock.style.display = 'block';
+        teacherBlock.style.display = 'none';
+
+        groupInput.disabled = false;
+        codeInput.disabled = true;
+
+        teacherBlock.querySelector('input').value = '';
+    } else {
+        btnTeacher.style.background = '#000000'; btnTeacher.style.color = '#ffffff';
+        btnStudent.style.background = 'none'; btnStudent.style.color = '#555555';
+
+        studentBlock.style.display = 'none';
+        teacherBlock.style.display = 'block';
+
+        groupInput.disabled = true;
+        codeInput.disabled = false;
+
+        studentBlock.querySelector('input').value = '';
+    }
+}
+
+window.onload = function() {
+    switchRole('student');
+};
+</script>
 {% endblock %}

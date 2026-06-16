@@ -3,3 +3,5 @@
 /main_service/config.py
 /auth_service/config.py
 /tests_service/config.py
+/db_schema/config.py
+/db_schema/migrations/alembic.ini
