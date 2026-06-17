@@ -92,8 +92,10 @@ nav a {
     margin-bottom: 30px;
 }
 
-.hero-buttons a {
-    margin-right: 12px;
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .btn-yellow {
@@ -790,6 +792,16 @@ footer {
     .header-inner {
         flex-direction: column;
         gap: 15px;
+    }
+
+        .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons p {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
     }
 
     nav {
