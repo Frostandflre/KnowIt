@@ -29,7 +29,7 @@
             <div id="student-block">
                 {{ form.group.label }}
                 <div>
-                    {{ form.group(class_="form-field", list="groups-list") }}
+                    {{ form.group(class_="form-field", list="groups-list", inputmode="none", autocomplete="off") }}
                 </div>
                 <datalist id="groups-list">
                     {% if groups %}
