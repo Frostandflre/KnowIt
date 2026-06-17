@@ -763,3 +763,42 @@ footer {
         font-size: 42px;
     }
 }
+
+@media (max-width: 768px) {
+
+    .features {
+        flex-direction: column;
+    }
+
+    .tests {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .test-card {
+        max-width: 100%;
+    }
+}
