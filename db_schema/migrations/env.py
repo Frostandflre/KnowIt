@@ -1,4 +1,6 @@
 from logging.config import fileConfig
+import os,sys
+from db_schema.config import Config
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
@@ -27,6 +29,12 @@ target_metadata = database.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+config = context.config
+
+if Config.SQLALCHEMY_DATABASE_URI:
+    config.set_main_option("sqlalchemy.url", Config.SQLALCHEMY_DATABASE_URI)
 
 def include_object(object, name, type_, reflected, compare_to):
     if type_ == "table" and object.schema and object.schema in ['pg_catalog', 'information_schema']:
